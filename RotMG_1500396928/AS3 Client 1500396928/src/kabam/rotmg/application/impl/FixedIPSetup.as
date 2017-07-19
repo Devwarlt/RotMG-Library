@@ -1,0 +1,89 @@
+package kabam.rotmg.application.impl
+{
+   import com.company.assembleegameclient.parameters.Parameters;
+   import kabam.rotmg.application.api.ApplicationSetup;
+   
+   public class FixedIPSetup implements ApplicationSetup
+   {
+       
+      
+      private var SERVER:String;
+      
+      private var UNENCRYPTED:String;
+      
+      private var ENCRYPTED:String;
+      
+      private var ANALYTICS:String;
+      
+      private var BUILD_LABEL:String;
+      
+      private var ipAddress:String;
+      
+      public function FixedIPSetup()
+      {
+         this.SERVER = "rotmgtesting.appspot.com";
+         this.UNENCRYPTED = "http://" + this.SERVER;
+         this.ENCRYPTED = "https://" + this.SERVER;
+         this.ANALYTICS = "UA-99999999-1";
+         this.BUILD_LABEL = "<font color=\'#9900FF\'>{IP}</font> #{VERSION}";
+         super();
+      }
+      
+      public function setAddress(param1:String) : FixedIPSetup
+      {
+         this.ipAddress = param1;
+         return this;
+      }
+      
+      public function getAppEngineUrl(param1:Boolean = false) : String
+      {
+         return !!param1?this.UNENCRYPTED:this.ENCRYPTED;
+      }
+      
+      public function getAnalyticsCode() : String
+      {
+         return this.ANALYTICS;
+      }
+      
+      public function getBuildLabel() : String
+      {
+         var _loc1_:String = Parameters.BUILD_VERSION + "." + Parameters.MINOR_VERSION;
+         return this.BUILD_LABEL.replace("{IP}",this.ipAddress).replace("{VERSION}",_loc1_);
+      }
+      
+      public function useLocalTextures() : Boolean
+      {
+         return true;
+      }
+      
+      public function isToolingEnabled() : Boolean
+      {
+         return true;
+      }
+      
+      public function isGameLoopMonitored() : Boolean
+      {
+         return true;
+      }
+      
+      public function useProductionDialogs() : Boolean
+      {
+         return false;
+      }
+      
+      public function areErrorsReported() : Boolean
+      {
+         return false;
+      }
+      
+      public function areDeveloperHotkeysEnabled() : Boolean
+      {
+         return true;
+      }
+      
+      public function isDebug() : Boolean
+      {
+         return false;
+      }
+   }
+}
