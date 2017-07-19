@@ -1,6 +1,9 @@
 # RotMG Library
 This repository host latest Realm of the Mad God custom client (localhost), production client, diff HTML, all packet ids, dat0 XML, dat1 XML, equipment sets XML and languages TXT.
 
+## Contribute to server source
+Check it at https://github.com/Devwarlt/Production-To-FSoD.
+
 ## Important!
 **Packet IDs generated are from AssembleeGameClientTIMESTAMP_produc and you need to setup them properly in your server!**
 
